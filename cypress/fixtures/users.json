@@ -1,0 +1,15 @@
+{
+
+    "users": [
+        {
+            "user": "agusDarwoft",
+            "password": "automation"
+        },
+
+        {
+            "user": "mariDugarte",
+            "password": "automation"
+        }
+    ]
+
+}
