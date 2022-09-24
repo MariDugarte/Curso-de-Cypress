@@ -21,7 +21,16 @@ describe('example to-do app', () => {
 
    login.getAlertBox().should("contain.text", "Error: Incorrect login or password provided.");
 
-  })
+  });
+
+  it.only("Visual testing de Login", () => {
+    const header = new HeaderPage();
+    const login = new LoginPage();
+
+    header.getLoginRegisterButon().click();
+    login.getUserInput().should("have.css", "border-bottom-left-radius", "0px");
+  });
+
 
   it('Login Mari', () => {
     const header = new HeaderPage;
@@ -39,7 +48,7 @@ describe('example to-do app', () => {
 
 })
 
-it.only('Login OK', () => {
+it('Login OK', () => {
   const header = new HeaderPage;
   const login = new LoginPage;
 

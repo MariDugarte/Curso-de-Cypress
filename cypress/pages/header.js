@@ -21,6 +21,10 @@ this.MEN_Btn = '.subnav > ul > li:nth-of-type(6) > a';
 this.HAIRCARE_Btn = '.subnav > ul > li:nth-of-type(7) > a';
 this.BOOKS_Btn = '.subnav > ul > li:nth-of-type(8) > a';
 
+this.navSubButtons = "nav>ul>li";
+this.mainMenu = "ul.categorymenu>li>a";
+this.homeOptionsContainer = "ul#main_menu";
+this.homeOptionsContainer2 = "div.subcategories";
 
     }
 }
@@ -38,8 +42,19 @@ return cy.get(this.locators.LoginRegisterBtn);
 return cy.get(this.locators.inputSearch);
      }
 
- getLoginRegisterButon (){
-return cy.get(this.locators.LoginRegisterBtn);
+ getNavSubButtons(num) {
+        return cy.get(this.locators.navSubButtons + ":nth-of-type(" + num + ")>a");
+      }
+    
+getMainMenu() {
+        return cy.get(this.locators.mainMenu);
+      }
+    
+getHomeOptionsContainer() {
+        return cy.get(this.locators.homeOptionsContainer);
+      }
+    
+getHomeOptionsContainer2() {
+        return cy.get(this.locators.homeOptionsContainer2);
+      }
     }
-
-}
