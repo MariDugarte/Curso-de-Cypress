@@ -3,6 +3,7 @@ import HeaderPage from '../pages/header';
 import LoginPage from '../pages/login';
 import HomePage from '../pages/home';
 import Data from '../fixtures/users.json';
+import Account from '../pages/account';
 
 describe('example to-do app', () => {
   beforeEach(() => {
@@ -23,7 +24,7 @@ describe('example to-do app', () => {
 
   });
 
-  it.only("Visual testing de Login", () => {
+  it("Visual testing de Login", () => {
     const header = new HeaderPage();
     const login = new LoginPage();
 
@@ -57,6 +58,54 @@ it('Login OK', () => {
   login.getUserInput().type(Data.users[0].user);
   login.getPassInput().type(Data.users[0].password);
   login.getLoginBtn().click();
+
+})
+
+it('New address', () => {
+  const header = new HeaderPage;
+  const login = new LoginPage;
+  const account = new Account;
+
+  header.getLoginRegisterButon().click();
+
+  login.getUserInput().type(Data.users[1].user);
+  login.getPassInput().type(Data.users[1].password);
+  login.getLoginBtn().click();
+
+  account.getManageAccountBtn().click();
+  account.getAddNewAddress().click();
+
+  account.getInputFirstName().type('Marieliany');
+  account.getInputLastName().type('Dugarte');
+  account.getInputAddress1().type('Estomba 3715');
+  account.getInputCity().type('Cordoba');
+  account.getSelectCountry().select('Argentina');
+  account.getSelectRegionState().select('Cordoba');
+  account.getInputZipPostCode().type('1023');
+  account.getOptionDefaultAddressNo().click();
+  account.getContinueBtn().click();
+
+  account.getInsertedOkBox().should("contain.text", "Your address has been successfully inserted");
+
+})
+
+it.only('New address Fail', () => {
+  const header = new HeaderPage;
+  const login = new LoginPage;
+  const account = new Account;
+
+  header.getLoginRegisterButon().click();
+
+  login.getUserInput().type(Data.users[1].user);
+  login.getPassInput().type(Data.users[1].password);
+  login.getLoginBtn().click();
+
+  account.getManageAccountBtn().click();
+  account.getAddNewAddress().click();
+
+  account.getContinueBtn().click();
+
+  account.getErrorBox().should("contain.text", "Oops, there is an error with information provided!");
 
 })
 
